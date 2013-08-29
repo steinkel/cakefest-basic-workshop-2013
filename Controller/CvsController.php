@@ -36,6 +36,15 @@ class CvsController extends AppController {
 		if (!$this->Cv->exists($id)) {
 			throw new NotFoundException(__('Invalid cv'));
 		}
+
+		$this->Cv->bindModel(
+                        array('hasMany' => array(
+                                        'CompletedExperience' => array(
+                                                'className' => 'Experience',
+                                                'conditions' => array('end_date < NOW()'),
+                                        )
+                                )
+                ));
 		$options = array('conditions' => array('Cv.' . $this->Cv->primaryKey => $id));
 		$this->set('cv', $this->Cv->find('first', $options));
 	}
