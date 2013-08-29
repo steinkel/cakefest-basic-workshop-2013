@@ -107,4 +107,17 @@ class JobsController extends AppController {
 			$this->Session->setFlash(__('The job could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+/**
+ * Sample download log file
+ */	
+	public function download_log() {
+		$this->log('test log to error.log file');
+		$this->response->file(TMP . 'logs' . DS . 'error.log', array(
+			'download' => true, 
+			'name' => 'error_log_file_' . time() . '.txt'));
+		$this->render(false);
+	}
+
+}
