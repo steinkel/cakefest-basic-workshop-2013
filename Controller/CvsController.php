@@ -113,4 +113,21 @@ class CvsController extends AppController {
 			$this->Session->setFlash(__('The cv could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+/**
+ * doing sample CV adding 
+ */
+	public function saving_samples() {
+		$data = array(
+			'first_name' => 'Peter',
+			'last_name' => 'Parker',
+			'telephone' => '666777888',
+			'email' => 'pparker@example.com',
+			'bio' => 'His bio here...'
+		);
+		$this->Cv->create();
+		$saveResult = $this->Cv->save($data);
+		debug($saveResult);
+		$this->_stop();
+	}
+}
