@@ -22,7 +22,7 @@ class Cv extends AppModel {
 		'Education' => array(
 			'className' => 'Education',
 			'foreignKey' => 'cv_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -35,7 +35,7 @@ class Cv extends AppModel {
 		'Experience' => array(
 			'className' => 'Experience',
 			'foreignKey' => 'cv_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -44,7 +44,13 @@ class Cv extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
+		),
+		'UnfinishedPosition' => array(
+			'className' => 'Experience',
+			'conditions' => array(
+				'UnfinishedPosition.end_date > NOW()',
+			),
+		),
 	);
 
 
