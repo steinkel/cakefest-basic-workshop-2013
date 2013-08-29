@@ -126,8 +126,24 @@ class CvsController extends AppController {
 			'bio' => 'His bio here...'
 		);
 		$this->Cv->create();
-		$saveResult = $this->Cv->save($data);
-		debug($saveResult);
+		//$saveResult = $this->Cv->save($data);
+		//debug($saveResult);
+		$complexData = array(
+			'Cv' => array(
+				'first_name' => 'SaveAll',
+				'last_name' => 'Testing',
+				'telephone' => '666777888',
+				'email' => 'test@example.com',
+				'bio' => 'Another bio...'
+			),
+			'Education' => array(
+				array('name' => 'first', 'description' => 'first description'),
+				array('name' => 'second', 'description' => 'second description'),
+			)
+		);
+		
+		debug($this->Cv->saveAssociated($complexData));
+
 		$this->_stop();
 	}
 }
