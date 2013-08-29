@@ -9,6 +9,12 @@ App::uses('AppModel', 'Model');
 class Job extends AppModel {
 
 /**
+ * Custom finders
+ * @var array
+ */	
+	public $findMethods = array('latest' => true);
+
+/**
  * Validation rules
  * @var array
  */
@@ -83,4 +89,23 @@ class Job extends AppModel {
 		return strtotime('now');
 	}
 
+/**
+ * Custom Finder for latest jobs
+ * @param string $state
+ * @param array $query
+ * @param array $results
+ * @return array modified query for find
+ */	
+	protected function _findLatest($state, $query, $results = array()) {
+		if ($state == 'before') {
+			if (empty($query['order'])) {
+				$query['order'] = array("{$this->alias}.created" => 'desc');
+			}
+			if (empty($query['limit'])) {
+				$query['limit'] = 10;
+			}
+			return $query;
+		}
+		return $results;
+	}
 }

@@ -22,6 +22,7 @@ class JobsController extends AppController {
  */
 	public function index() {
 		$this->Job->recursive = 0;
+		$this->Paginator->settings = array('findType' => 'latest');
 		$this->set('jobs', $this->Paginator->paginate());
 	}
 
