@@ -7,6 +7,7 @@ App::uses('AppModel', 'Model');
  */
 class Company extends AppModel {
 
+	public $displayField = 'nameId';
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -31,4 +32,16 @@ class Company extends AppModel {
 		)
 	);
 
+/**
+ * Constructor, adding virtual fields
+ * @param type $id
+ * @param type $table
+ * @param type $ds
+ */
+	public function __construct($id = false, $table = null, $ds = null) {
+                parent::__construct($id, $table, $ds);
+                $this->virtualFields = array(
+                        'nameId' => "CONCAT({$this->alias}.name, ' - ', {$this->alias}.{$this->primaryKey})",
+                );
+        }
 }
