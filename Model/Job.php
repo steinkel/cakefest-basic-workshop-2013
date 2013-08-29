@@ -8,6 +8,20 @@ App::uses('AppModel', 'Model');
  */
 class Job extends AppModel {
 
+/**
+ * Validation rules
+ * @var array
+ */
+	public $validate = array(
+		'name' => array(
+			'todayIsWorkday' => array(
+				'rule' => array('todayIsWorkday'),
+				'message' => "You can't create new jobs in weekends",
+				'on' => 'create',
+				'last' => true,
+			),
+		),
+	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -46,5 +60,27 @@ class Job extends AppModel {
 			'finderQuery' => '',
 		)
 	);
+
+/**
+ * Validation rule to check if today is a workday
+ * @param string $check
+ * @return boolean
+ */	
+	public function todayIsWorkday($check) {
+		$weekday = date('w', $this->getNow());
+		if ($weekday == 0 || $weekday == 6) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+/**
+ * Get today, to be mocked later...
+ * @return mixed
+ */	
+	protected function getNow() {
+		return strtotime('now');
+	}
 
 }
