@@ -7,6 +7,15 @@ App::uses('AppModel', 'Model');
  */
 class Education extends AppModel {
 
+	public $validate = array(
+		'description' => array(
+			'minLength' => array(
+				'rule' => array('minLength', '8'),
+				'message' => 'Description should have at least 8 characters',
+				'on' => 'create',
+			)
+		),
+	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 

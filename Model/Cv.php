@@ -11,6 +11,20 @@ class Cv extends AppModel {
 
 	public $displayField = 'display_name';
 
+	public $validate = array(
+		'email' => array(
+			'email' => array(
+				'rule' => 'email',
+				'message' => 'Please enter a valid email'
+			),
+			'unique' => array(
+				'rule' => 'isUnique',
+				'message' => 'Please enter an unique email'
+			),
+		),
+	);
+
+
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
