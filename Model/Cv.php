@@ -9,6 +9,7 @@ App::uses('AppModel', 'Model');
  */
 class Cv extends AppModel {
 
+	public $displayField = 'display_name';
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -67,5 +68,18 @@ class Cv extends AppModel {
 			'finderQuery' => '',
 		)
 	);
+
+/**
+ * Constructor, adding virtual fields
+ * @param type $id
+ * @param type $table
+ * @param type $ds
+ */
+	public function __construct($id = false, $table = null, $ds = null) {
+		parent::__construct($id, $table, $ds);
+		$this->virtualFields = array(
+			'display_name' => "CONCAT({$this->alias}.first_name, ' ', {$this->alias}.last_name, ' - ', {$this->alias}.{$this->primaryKey})",
+		);
+	}
 
 }
