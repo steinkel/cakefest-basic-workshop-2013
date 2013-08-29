@@ -1,5 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('CakeEmail', 'Network/Email');
+
 /**
  * Company Model
  *
@@ -44,4 +46,20 @@ class Company extends AppModel {
                         'display_name' => "CONCAT({$this->alias}.name, ' - ', {$this->alias}.{$this->primaryKey})",
                 );
         }
+
+/**
+ * Send email on company save
+ * @param type $created
+ */	
+	public function afterSave($created) {
+		if ($created) {
+			$mail = CakeEmail::deliver(
+				'admin@job.com', 
+				__("New Company created id: %s", $this->data['Company']['id']), 
+				__('New company was created ...'), 
+				'default'
+			);
+		}
+	}
+
 }
