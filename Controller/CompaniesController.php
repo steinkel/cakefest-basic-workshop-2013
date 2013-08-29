@@ -111,4 +111,28 @@ class CompaniesController extends AppController {
 		$this->_stop();
 	}
 
+/**
+ * Examples for Containable behavior
+ * 
+ */
+        public function containable_examples() {
+                // get companies and job names for all jobs with description like "PHP"
+                debug($this->Company->find('all', array(
+                        'contain' => array('Job' => array(
+                                'conditions' => array("Job.description LIKE '%PHP%'"),
+                                'fields' => array('Job.name'),
+                        ))
+                )));
+
+                // get CV names for Jobs in a company
+                debug($this->Company->find('all', array(
+                        'contain' => array('Job' => array(
+                                'Cv' => array(
+                                        'fields' => array('Cv.first_name', 'Cv.last_name'),
+                                        ),
+                                'fields' => array('id', 'name'),
+                        )),
+                )));
+                $this->_stop();
+        }
 }
