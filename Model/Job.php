@@ -9,6 +9,12 @@ App::uses('AppModel', 'Model');
 class Job extends AppModel {
 
 /**
+ * AcsAs
+ * @var array
+ */
+	public $actsAs = array('CreationReport');
+
+/**
  * Custom finders
  * @var array
  */	
