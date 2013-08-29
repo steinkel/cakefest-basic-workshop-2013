@@ -62,4 +62,15 @@ class Company extends AppModel {
 		}
 	}
 
+/**
+ * Sample function to get related jobs to a companyId
+ * @param type $companyId
+ * @return array Jobs
+ */	
+	public function getRelatedJobs($companyId) {
+		return $this->Job->find('all', array(
+			'conditions' => array('Job.company_id' => $companyId),
+			'order' => array('Job.created DESC')
+		));
+	}
 }

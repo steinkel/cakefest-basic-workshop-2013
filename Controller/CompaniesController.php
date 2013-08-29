@@ -100,4 +100,15 @@ class CompaniesController extends AppController {
 			$this->Session->setFlash(__('The company could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+/**
+ * Sample method to test the output of Company::getRelatedJobs
+ */	
+	public function related($companyId) {
+		$jobs = $this->Company->getRelatedJobs($companyId);
+		debug($jobs);
+		$this->_stop();
+	}
+
+}
