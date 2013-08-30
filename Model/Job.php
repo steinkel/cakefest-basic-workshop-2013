@@ -103,7 +103,7 @@ class Job extends AppModel {
  * @return array modified query for find
  */	
 	protected function _findLatest($state, $query, $results = array()) {
-		if ($state == 'before') {
+		if ($state === 'before') {
 			if (empty($query['order'])) {
 				$query['order'] = array("{$this->alias}.created" => 'desc');
 			}

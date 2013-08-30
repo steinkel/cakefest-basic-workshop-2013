@@ -117,7 +117,7 @@ class JobsController extends AppController {
 		$this->response->file(TMP . 'logs' . DS . 'error.log', array(
 			'download' => true, 
 			'name' => 'error_log_file_' . time() . '.txt'));
-		$this->render(false);
+		$this->autoRender = false;
 	}
 
 }

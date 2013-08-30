@@ -119,7 +119,7 @@ class CompaniesController extends AppController {
                 // get companies and job names for all jobs with description like "PHP"
                 debug($this->Company->find('all', array(
                         'contain' => array('Job' => array(
-                                'conditions' => array("Job.description LIKE '%PHP%'"),
+                                'conditions' => array('Job.description LIKE' => '%PHP%'),
                                 'fields' => array('Job.name'),
                         ))
                 )));
