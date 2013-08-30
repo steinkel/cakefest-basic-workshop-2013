@@ -1,4 +1,6 @@
-<div class="educations form">
+<?php $this->extend('/Common/two'); ?>
+<?php $this->start('left-column'); ?>
+<div>
 <?php echo $this->Form->create('Education'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Education'); ?></legend>
@@ -13,7 +15,9 @@
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
-<div class="actions">
+<?php $this->end(); ?>
+<?php $this->start('right-column'); ?>
+<div>
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
@@ -23,3 +27,4 @@
 		<li><?php echo $this->Html->link(__('New Cv'), array('controller' => 'cvs', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php $this->end(); ?>

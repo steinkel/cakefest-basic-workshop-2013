@@ -136,12 +136,16 @@ class JobsController extends AppController {
 		
 		$this->layout = 'front';
 		
-		// get the latest companies
-		$companies = $this->Job->Company->find('all', array(
-			'order' => 'Company.created DESC',
-			'limit' => 5,
-			'recursive' => -1
-		));
+		// get the cached latest companies
+		$companies = Cache::read('companies');
+        if (!$companies) {
+            $companies = $this->Job->Company->find('all', array(
+				'order' => 'Company.created DESC',
+				'limit' => 5,
+				'recursive' => -1
+			));
+            Cache::write('companies', $companies);
+        }
 
 		// get the latest jobs
 		$jobs = $this->Job->find('latest');

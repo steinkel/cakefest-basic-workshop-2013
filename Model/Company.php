@@ -59,7 +59,13 @@ class Company extends AppModel {
 				__('New company was created ...'), 
 				'default'
 			);
+			Cache::delete('companies');
 		}
+	}
+	
+	public function afterDelete() {
+		parent::afterDelete();
+		Cache::delete('companies');
 	}
 
 /**

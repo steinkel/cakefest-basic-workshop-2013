@@ -20,7 +20,7 @@
 			<li><?php echo $this->Html->link($company['Company']['name'], array(
 				'controller' => 'companies',
 				'action' => 'details',
-				$job['Company']['id']
+				$company['Company']['id']
 			));?></li>
 		<?php endforeach; ?>
 		</ul>
