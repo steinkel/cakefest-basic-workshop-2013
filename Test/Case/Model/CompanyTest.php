@@ -14,7 +14,11 @@ class CompanyTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.company',
-		'app.job'
+		'app.job',
+		'app.cv',
+		'app.education',
+		'app.experience',
+		'app.cvs_job'
 	);
 
 /**
@@ -36,6 +40,31 @@ class CompanyTest extends CakeTestCase {
 		unset($this->Company);
 
 		parent::tearDown();
+	}
+
+/**
+ * testGetRelatedJobs method
+ *
+ * @return void
+ */
+	public function testGetRelatedJobs() {
+		$companyId = 1;
+		
+		$jobs = $this->Company->getRelatedJobs($companyId);
+		//debug($jobs);
+		
+		// we want to test:
+		// there are 2 jobs related to this companyId
+		$this->assertEquals(2, count($jobs));
+		
+		// jobs belongs to company id = $companyId
+		$companyIdExtracted = Hash::extract($jobs, '{n}.Job.company_id');
+		$this->assertEquals(1, count(array_unique($companyIdExtracted)));
+
+		// jobs are ordered by creation date
+		$jobIdExtracted = Hash::extract($jobs, '{n}.Job.id');
+		$expectedIdOrder = array(2, 1);
+		$this->assertEquals($expectedIdOrder, $jobIdExtracted, 'Jobs are not ordered by date');
 	}
 
 }
