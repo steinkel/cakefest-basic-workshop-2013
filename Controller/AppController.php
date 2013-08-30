@@ -37,4 +37,12 @@ class AppController extends Controller {
 		'Session', 
 		'DebugKit.Toolbar'
 	);
+	
+/**
+ * Helpers
+ * @var array
+ */
+	public $helpers = array(
+		'Form' => array('className' => 'AppForm'),
+	);	
 }
