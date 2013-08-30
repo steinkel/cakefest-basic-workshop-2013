@@ -135,4 +135,13 @@ class CompaniesController extends AppController {
                 )));
                 $this->_stop();
         }
+
+/**
+ * Display a company profile
+ * You can use other controller actions and reuse their code
+ * @param type $id
+ */	
+	public function details($id = null) {
+		$this->view($id);
+	}
 }

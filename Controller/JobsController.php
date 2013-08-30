@@ -120,4 +120,11 @@ class JobsController extends AppController {
 		$this->autoRender = false;
 	}
 
+/**
+ * Display a Job profile
+ * @param type $id
+ */	
+	public function details($id = null) {
+		$this->view($id);
+	}
 }
