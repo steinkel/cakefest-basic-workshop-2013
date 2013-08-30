@@ -125,6 +125,27 @@ class JobsController extends AppController {
  * @param type $id
  */	
 	public function details($id = null) {
+		$this->layout = 'front';
 		$this->view($id);
 	}
+	
+/**
+ * Main application public entrypoint
+ */	
+	public function home() {
+		
+		$this->layout = 'front';
+		
+		// get the latest companies
+		$companies = $this->Job->Company->find('all', array(
+			'order' => 'Company.created DESC',
+			'limit' => 5,
+			'recursive' => -1
+		));
+
+		// get the latest jobs
+		$jobs = $this->Job->find('latest');
+		
+		$this->set(compact('companies', 'jobs'));
+	}	
 }

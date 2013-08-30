@@ -142,6 +142,7 @@ class CompaniesController extends AppController {
  * @param type $id
  */	
 	public function details($id = null) {
+		$this->layout = 'front';
 		$this->view($id);
 	}
 }
