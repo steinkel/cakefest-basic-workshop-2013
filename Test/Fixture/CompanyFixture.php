@@ -30,8 +30,62 @@ class CompanyFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => '2013-08-28 20:28:49',
-			'modified' => '2013-08-28 20:28:49'
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 2,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 3,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 4,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 5,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 6,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 7,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 8,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 9,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
+		),
+		array(
+			'id' => 10,
+			'name' => 'Lorem ipsum dolor sit amet',
+			'created' => '2012-10-05 13:02:59',
+			'modified' => '2012-10-05 13:02:59'
 		),
 	);
 
