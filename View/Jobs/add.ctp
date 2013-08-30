@@ -6,7 +6,9 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('company_id');
 		echo $this->Form->input('description');
-		echo $this->Form->input('Cv');
+		echo $this->Form->input('Cv', array(
+			'multiple' => 'checkbox'
+		));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
